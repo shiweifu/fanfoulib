@@ -1,0 +1,35 @@
+一个Python编写的饭否库。
+使用oauth的方式进行调用，使用前需要设置几个全局变量的值：
+
+USERNAME = ''       # 你的用户名
+PASSWD = ''         # 你的密码
+CONSUMER_KEY = ''   # 应用key
+CONSUMER_SECRET = ''  # 应用secret
+
+这四个全局变量并非必须，只是生成FanfouAccount这个类时需要提供。
+然后把FanfouAccount对象传给FanfouLib，就可以使用了。
+fanfoulib.py 提供了一个简单的调用：
+
+account = FanfouAccount(USERNAME, PASSWD, CONSUMER_KEY, CONSUMER_SECRET)
+lib = FanfouLib(account)
+#    print lib.direct_messages.new(user="", text="hello")
+#    print lib.status.update(status="饿死了，吃面去")
+print lib.photos.user_timeline()
+
+所有API的调用方式都是通过：
+lib.module_name.api_name 的方式调用。
+如你想更新状态：
+ret, jsn = lib.statues.update(status="今天很欢乐")
+
+ret是调用是否成功，jsn是返回的json结构体，里面会有错误信息，可以对照着来使用。
+里面的参数，请参照文档传递即可。
+
+一些资料：
+饭否API文档：https://github.com/FanfouAPI/FanFouAPIDoc/wiki/Apicategory
+前人整理的笔记：http://www.aoisnow.net/blog/archives/45
+使用命令行方式更新：http://zhasm.com/2011/11/23/updating-fanfou-msg-via-bash-cml.html
+这个命令行肯定是能调用成功的，我也是抓包参考它才完成的，感谢rex。
+
+反馈：
+shiweifu@gmail.com
+fanfou.com/float

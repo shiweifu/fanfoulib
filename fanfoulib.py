@@ -16,8 +16,8 @@ import urllib2
 from urllib2 import Request, urlopen
 import uuid
 
-USERNAME = ""
-PASSWD = ""
+USERNAME = ''
+PASSWD = ''
 CONSUMER_KEY = ''   # 应用key
 CONSUMER_SECRET = ''  # 应用secret
 
@@ -359,7 +359,7 @@ class FanfouLib(object):
     def __init__(self, _account):
         super(FanfouLib, self).__init__()
         self.url_tokens = APIUrlTokens()
-        self.status = FanfouHandle(self.url_tokens.status, _account)
+        self.statuses = FanfouHandle(self.url_tokens.status, _account)
         self.account = FanfouHandle(self.url_tokens.account, _account)
         self.search = FanfouHandle(self.url_tokens.search, _account)
         self.blocks = FanfouHandle(self.url_tokens.blocks, _account)
